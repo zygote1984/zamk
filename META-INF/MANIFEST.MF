@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Zamk
+Bundle-SymbolicName: Zamk;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: zamk.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jdt.apt.core;bundle-version="3.3.500"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: zamk,
+ zamk.lib.apt,
+ zamk.lib.runtime,
+ zamk.lib.zio
