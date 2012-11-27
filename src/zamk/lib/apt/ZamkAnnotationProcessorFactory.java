@@ -11,7 +11,7 @@ import com.sun.mirror.declaration.AnnotationTypeDeclaration;
 /**
  * @since 1.0
  */
-public class SplitterAnnotationProcessorFactory implements
+public class ZamkAnnotationProcessorFactory implements
 		AnnotationProcessorFactory {
 
 	@Override
@@ -29,12 +29,16 @@ public class SplitterAnnotationProcessorFactory implements
 			Set<AnnotationTypeDeclaration> atds,
 			AnnotationProcessorEnvironment env) {
 	
-		AnnotationProcessor result;
+		AnnotationProcessor result = null;
 		if(atds.isEmpty()) {
 			result = AnnotationProcessors.NO_OP;
 		}
 		else {
-			result = (AnnotationProcessor) new SplitterAnnotationProcessor(env);
+			for(AnnotationTypeDeclaration atd: atds)
+				if(atd.getSimpleName().equals("Splitter"))
+					result = (AnnotationProcessor) new SplitterAnnotationProcessor(env);
+				else if(atd.getSimpleName().equals("Aggregator"))
+					result = (AnnotationProcessor) new AggregatorAnnotationProcessor(env);
 		}
 		return result;
 		

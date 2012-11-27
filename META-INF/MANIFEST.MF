@@ -6,10 +6,15 @@ Bundle-Version: 1.0.0
 Bundle-Activator: zamk.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.jdt.apt.core;bundle-version="3.3.500"
+ org.eclipse.jdt.apt.core;bundle-version="3.3.500",
+ org.eclipse.xtend.lib,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: zamk,
+ zamk.lib.annotation,
  zamk.lib.apt,
  zamk.lib.runtime,
  zamk.lib.zio
+

@@ -6,7 +6,7 @@
       <factories
             enableDefault="true">
          <factory
-               class="zamk.lib.apt.SplitterAnnotationProcessorFactory"
+               class="zamk.lib.apt.ZamkAnnotationProcessorFactory"
                implements="AnnotationProcessorFactory">
          </factory>
       </factories>
