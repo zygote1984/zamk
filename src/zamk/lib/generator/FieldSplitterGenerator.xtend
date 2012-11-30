@@ -11,12 +11,8 @@ class FieldSplitterGenerator {
 	
 	var clazz = ""
 	var className = type.simpleName
-	if(className.contains("Splitter"))
-	{
-		clazz = className.replace("Splitter", "FieldSplitter")
-	}
-	else
-		clazz = className + "FieldSplitter" 
+
+	clazz = className + "Impl" 
 	
 	'''
 	package «packageName»;

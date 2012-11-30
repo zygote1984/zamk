@@ -21,7 +21,10 @@ public class ZamkAnnotationProcessorFactory implements
 
 	@Override
 	public Collection<String> supportedAnnotationTypes() {
-		return Collections.singletonList("annotation.Splitter");
+		Collection<String> a = new ArrayList<String>();
+		a.add("annotation.Splitter");
+		a.add("annotation.Aggregator");
+		return a;
 	}
 
 	@Override
@@ -29,16 +32,26 @@ public class ZamkAnnotationProcessorFactory implements
 			Set<AnnotationTypeDeclaration> atds,
 			AnnotationProcessorEnvironment env) {
 	
+
+		System.out.println("************************************");
+		System.out.println("Zamk Framework Processing started...");
+		System.out.println("************************************");
 		AnnotationProcessor result = null;
 		if(atds.isEmpty()) {
 			result = AnnotationProcessors.NO_OP;
 		}
 		else {
 			for(AnnotationTypeDeclaration atd: atds)
+			{	
 				if(atd.getSimpleName().equals("Splitter"))
+				{
 					result = (AnnotationProcessor) new SplitterAnnotationProcessor(env);
+				}
 				else if(atd.getSimpleName().equals("Aggregator"))
+				{
 					result = (AnnotationProcessor) new AggregatorAnnotationProcessor(env);
+				}
+			}
 		}
 		return result;
 		

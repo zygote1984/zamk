@@ -3,7 +3,6 @@ package zamk.lib.apt;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -11,7 +10,6 @@ import java.util.Set;
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
-import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 
 import zamk.lib.generator.FieldSplitterGenerator;
@@ -49,14 +47,8 @@ public class SplitterAnnotationProcessor extends AbstractProcessor implements
 
 	@Override
 	public void process() {
-
-		System.out.println("************************************");
-		System.out.println("Zamk Framework Processing started...");
-		System.out.println("************************************");
 		Collection<TypeDeclaration> typeDec = env.getTypeDeclarations();
-
-		Set<? extends Element> elements = Collections.emptySet();
-
+		
 		for (TypeDeclaration t : typeDec) {
 			Collection<AnnotationMirror> am = t.getAnnotationMirrors();
 			for (AnnotationMirror a : am)
@@ -155,10 +147,8 @@ public class SplitterAnnotationProcessor extends AbstractProcessor implements
 		String className = e.getSimpleName();
 		String packageName = e.getPackage().getSimpleName();
 		String clazz = "";
-		if (className.contains("Splitter")) {
-			clazz = className.replace("Splitter", "FieldSplitter");
-		} else
-			clazz = className.concat("FieldSplitter");
+	
+		clazz = className.concat("Impl");
 
 		PrintWriter writer = null;
 		try {
